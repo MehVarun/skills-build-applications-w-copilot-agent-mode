@@ -15,13 +15,29 @@ const Workouts = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Workouts</h2>
-      <ul>
-        {workouts.map((workout, idx) => (
-          <li key={workout.id || idx}>{workout.name || JSON.stringify(workout)}</li>
-        ))}
-      </ul>
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-danger">Workouts</h2>
+        <table className="table table-striped table-bordered">
+          <thead className="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {workouts.map((workout, idx) => (
+              <tr key={workout.id || idx}>
+                <th scope="row">{workout.id || idx + 1}</th>
+                <td>{workout.name || '-'}</td>
+                <td>{workout.type || JSON.stringify(workout)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button className="btn btn-danger mt-3">Add Workout</button>
+      </div>
     </div>
   );
 };

@@ -15,13 +15,29 @@ const Users = () => {
   }, [endpoint]);
 
   return (
-    <div>
-      <h2>Users</h2>
-      <ul>
-        {users.map((user, idx) => (
-          <li key={user.id || idx}>{user.name || JSON.stringify(user)}</li>
-        ))}
-      </ul>
+    <div className="card shadow mb-4">
+      <div className="card-body">
+        <h2 className="card-title mb-4 text-warning">Users</h2>
+        <table className="table table-striped table-bordered">
+          <thead className="table-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user, idx) => (
+              <tr key={user.id || idx}>
+                <th scope="row">{user.id || idx + 1}</th>
+                <td>{user.name || '-'}</td>
+                <td>{user.email || JSON.stringify(user)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <button className="btn btn-warning mt-3">Invite User</button>
+      </div>
     </div>
   );
 };
